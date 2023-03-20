@@ -1,22 +1,16 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { TestBed } from '@angular/core/testing';
 
-@Injectable({
-  providedIn: 'root'
-})
-export class ApiService {
-  private apiUrl = 'https://api.jikan.moe/v4/manga?q=dash kappei';
+import { ApiServiceService } from './api.service.service';
 
-  constructor(private http: HttpClient) {}
+describe('ApiServiceService', () => {
+  let service: ApiServiceService;
 
-  searchManga(title: string): Observable<any> {
-    const url = `${this.apiUrl}/search?title=${title}`;
-    return this.http.get(url);
-  }
+  beforeEach(() => {
+    TestBed.configureTestingModule({});
+    service = TestBed.inject(ApiServiceService);
+  });
 
-  getMangaDetails(id: number): Observable<any> {
-    const url = `${this.apiUrl}/manga/${id}`;
-    return this.http.get(url);
-  }
-}
+  it('should be created', () => {
+    expect(service).toBeTruthy();
+  });
+});
